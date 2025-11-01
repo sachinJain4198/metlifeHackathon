@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 
 const HighAmountClaimsCard = () => {
 
-  const { claims, loading, error } = useSelector((state) => state.claims);
+  const { claims, loading, error } = useSelector((state) => state.allClaims);
   const [selectedClaim, setSelectedClaim] = React.useState(null);
 
   const highAmountClaims = React.useMemo(() => {

@@ -19,7 +19,7 @@ import {
 export default function AdminDashboard() {
 
   const dispatch = useDispatch();
-  const { claims, loading, error } = useSelector((state) => state.claims);
+  const { claims, loading, error } = useSelector((state) => state.allClaims);
 
   const stats = React.useMemo(() => {
     if (!claims || claims.length === 0) return [];

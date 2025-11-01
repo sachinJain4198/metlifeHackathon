@@ -4,7 +4,8 @@ import { useDispatch, useSelector } from "react-redux";
 
 export default function TotalClaimsAmountByStatus() {
 
-  const { claims, loading, error } = useSelector((state) => state.claims);
+  const { claims, loading, error } = useSelector((state) => state.allClaims);
+  console.log(claims)
     
   const totals = React.useMemo(() => {
     if (!claims || claims.length === 0)

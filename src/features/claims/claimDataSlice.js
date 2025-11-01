@@ -1,7 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-const claimsSlice = createSlice({
-  name: "claims",
+const allClaimsSlice = createSlice({
+  name: "allClaims",
   initialState: {
     claims: [
       {
@@ -118,5 +118,5 @@ const claimsSlice = createSlice({
   },
 });
 
-export const { setClaims, setLoading, setError } = claimsSlice.actions;
-export default claimsSlice.reducer;
+export const { setClaims, setLoading, setError } = allClaimsSlice.actions;
+export default allClaimsSlice.reducer;
