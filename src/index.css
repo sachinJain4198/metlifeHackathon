@@ -1,3 +1,99 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* Modern font configuration */
+* {
+  font-family: 'Inter', 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', sans-serif;
+}
+
+body {
+  background-color: #f6f8fb;
+  font-family: 'Inter', 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', sans-serif;
+  font-weight: 400;
+  line-height: 1.6;
+  letter-spacing: -0.01em;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Typography hierarchy */
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Poppins', 'Inter', sans-serif;
+  font-weight: 600;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+}
+
+.font-heading {
+  font-family: 'Poppins', 'Inter', sans-serif;
+  font-weight: 600;
+}
+
+.font-body {
+  font-family: 'Inter', sans-serif;
+  font-weight: 400;
+}
+.selected-button-color{
+  background: #0096d6 !important;
+}
+.button-color{
+  background: hsl(210 20% 98%) !important;
+}
+.button-color:hover{
+  background:hsl(200 90% 50%);
+}
+
+.bg-gradient-primary {
+  background: linear-gradient(90deg, #0096d6 0%, #20c6b7 100%);
+  color: #fff;
+}
+
+.bg-gradient-primary {
+  background: linear-gradient(90deg, #0096d6 0%, #20c6b7 100%);
+  color: #fff;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  padding: 1.5rem 2rem;
+}
+
+.bg-gradient-primary:disabled {
+  background: linear-gradient(90deg, #9ca3af 0%, #d1d5db 100%) !important;
+  color: #6b7280 !important;
+  cursor: not-allowed !important;
+  opacity: 0.6 !important;
+}
+
+/* Button hover effects with primary gradient */
+.MuiButton-root.MuiButton-contained:hover:not(:disabled) {
+  background: linear-gradient(90deg, #0096d6 0%, #20c6b7 100%) !important;
+  color: #fff !important;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(0, 150, 214, 0.3);
+  transition: all 0.3s ease;
+}
+
+.MuiButton-root.MuiButton-outlined:hover:not(:disabled) {
+  background: linear-gradient(90deg, #0096d6 0%, #20c6b7 100%) !important;
+  color: #fff !important;
+  border-color: transparent !important;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(0, 150, 214, 0.3);
+  transition: all 0.3s ease;
+}
+
+/* Disabled button styles */
+.MuiButton-root.MuiButton-contained:disabled {
+  background: linear-gradient(90deg, #9ca3af 0%, #d1d5db 100%) !important;
+  color: #6b7280 !important;
+  cursor: not-allowed !important;
+  opacity: 0.6 !important;
+}
+
+.MuiButton-root.MuiButton-outlined:disabled {
+  background: transparent !important;
+  color: #9ca3af !important;
+  border-color: #d1d5db !important;
+  cursor: not-allowed !important;
+  opacity: 0.6 !important;
+}
