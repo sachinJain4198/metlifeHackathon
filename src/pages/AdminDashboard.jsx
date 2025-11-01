@@ -67,15 +67,12 @@ export default function AdminDashboard() {
   }, [claims]);
 
   React.useEffect(() => {
-    console.log("HItted")
     const fetchClaims = async () => {
       try {
         dispatch(setLoading(true));
         const response = await fetch("/mockClaimsData.json");
-        console.log("Respense", response)
         if (!response.ok) throw new Error("Failed to fetch claims data");
         const data = await response.json();
-        console.log("Data",data)
         dispatch(setClaims(data));
       } catch (err) {
         dispatch(setError(err.message));
@@ -83,7 +80,6 @@ export default function AdminDashboard() {
         dispatch(setLoading(false));
       }
     };
-    console.log("abkjdfkaj")
     fetchClaims();
   }, []);
 
@@ -113,28 +109,10 @@ export default function AdminDashboard() {
 
           {/* Right column - High Risk Claims */}
           <div className="col-lg-6 mb-4">
-            <HighAmountClaimsCard claims={claims} />
+            <HighAmountClaimsCard />
           </div>
         </div>
       </div>
-
-      {/* <h1>AI Processing Performance</h1>
-      <p>Automated decision-making metrics</p> */}
-
-      {/* <div className="grid md:grid-cols-3 gap-6">
-        <div className="text-center p-6 bg-gradient-primary rounded-lg">
-          <div className="text-4xl font-bold text-white mb-2">94%</div>
-          <div className="text-white/90">Auto-Approval Rate</div>
-        </div>
-        <div className="text-center p-6 bg-gradient-success rounded-lg">
-          <div className="text-4xl font-bold text-white mb-2">98.5%</div>
-          <div className="text-white/90">Fraud Detection Accuracy</div>
-        </div>
-        <div className="text-center p-6 bg-gradient-warning rounded-lg">
-          <div className="text-4xl font-bold text-white mb-2">1.2s</div>
-          <div className="text-white/90">Avg. AI Processing Time</div>
-        </div>
-      </div> */}
     </div>
   );
 }

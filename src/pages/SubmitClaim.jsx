@@ -60,7 +60,6 @@ export default function SubmitClaim() {
             description: details.desc,
             attachments: files.map((f) => ({ name: f.name, type: f.type, size: f.size }))
         }
-        console.log('Submit Payload', data)
         navigate('/claims', { replace: true })
     }
 
