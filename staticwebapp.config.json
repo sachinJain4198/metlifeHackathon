@@ -1,15 +1,26 @@
 {
   "navigationFallback": {
-    "rewrite": "index.html"
+    "rewrite": "/index.html",
+    "exclude": ["/images/*.{png,jpg,gif}", "/css/*"]
   },
   "responseOverrides": {
     "404": {
-      "rewrite": "index.html"
+      "rewrite": "/index.html",
+      "statusCode": 200
     }
   },
   "platform": {
     "apiRuntime": "node:20"
   },
-  "appLocation": "/",
-  "outputLocation": "dist"
+  "routes": [
+    {
+      "route": "/api/*",
+      "allowedRoles": ["anonymous"]
+    },
+    {
+      "route": "/*",
+      "serve": "/index.html",
+      "statusCode": 200
+    }
+  ]
 }
