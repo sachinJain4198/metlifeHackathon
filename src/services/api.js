@@ -1,14 +1,40 @@
 import axios from 'axios'
+import { getAllClaims } from './mock.js'
 
 export const api = axios.create({
   baseURL: 'https://api.example.com',
   timeout: 10000,
 })
 
-// export const fetchItems = async () => {
-//   const res = await api.get('/items')
-//   return res.data
-// }
+// Claims API functions
+export const fetchClaims = async () => {
+  // For now, return mock data. In production, this would be:
+  // const res = await api.get('/claims')
+  // return res.data
+  return new Promise((resolve) => {
+    setTimeout(() => {
+      resolve(getAllClaims)
+    }, 500) // Simulate API delay
+  })
+}
+
+// Fetch detailed claim information
+export const fetchClaimDetails = async (claimId) => {
+  // For now, find claim from the same getAllClaims data
+  // In production, this would be:
+  // const res = await api.get(`/claims/${claimId}`)
+  // return res.data
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      const claimDetails = getAllClaims.find(claim => claim.policyId === claimId)
+      if (claimDetails) {
+        resolve(claimDetails)
+      } else {
+        reject(new Error(`Claim with ID ${claimId} not found`))
+      }
+    }, 800) // Simulate API delay, slightly longer for details
+  })
+}
 
 // export const createItem = async (payload) => {
 //   const res = await api.post('/items', payload)

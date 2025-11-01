@@ -1,6 +1,7 @@
-import { configureStore } from "@reduxjs/toolkit";
-import uiReducer from "../features/ui/uiSlice.js";
-import claimsReducer from "../features/claims/claimDataSlice.js";
+import { configureStore } from '@reduxjs/toolkit'
+import uiReducer from '../features/ui/uiSlice.js'
+import claimsReducer from '../features/claims/claimsSlice.js'
+
 const store = configureStore({
   reducer: {
     ui: uiReducer,
