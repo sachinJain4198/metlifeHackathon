@@ -74,13 +74,13 @@ export default function AdminDashboard() {
         id: crypto.randomUUID(),
         title: "Pending Claims",
         value: pending,
-        icon: AlertTriangle,
+        icon: Clock,
       },
       {
         id: crypto.randomUUID(),
         title: "Rejected Claims",
         value: rejected,
-        icon: Clock,
+        icon: AlertTriangle,  
       },
     ];
   }, [claims]);
