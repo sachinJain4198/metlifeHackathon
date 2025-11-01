@@ -13,7 +13,7 @@ import { useState } from 'react'
 import { Menu as MenuIcon, FileText, ClipboardList, LayoutGrid, Shield } from 'lucide-react'
 
 const actions = [
-  { to: '/', label: 'Submit Claim', icon: <FileText size={14} />, variant: 'contained' },
+  { to: '/submit', label: 'Submit Claim', icon: <FileText size={14} />, variant: 'contained' },
   { to: '/claims', label: 'My Claims', icon: <ClipboardList size={14} />, variant: 'outlined' },
   { to: '/admin', label: 'Admin Dashboard', icon: <LayoutGrid size={14} />, variant: 'outlined' },
 ]
@@ -30,8 +30,8 @@ export default function Layout() {
             <Avatar variant="rounded" sx={{ bgcolor: '#13c1cf', width: 40, height: 40 }}>
               <Shield size={20} color="#fff" />
             </Avatar>
-            <Box>
-              <Typography variant="h6" sx={{ lineHeight: 1, fontWeight: 700 }}>SmartClaims</Typography>
+            <Box onClick={()=>window.location.href='/'} >
+              <Typography variant="h6" sx={{ lineHeight: 1, fontWeight: 700 }} >SmartClaims</Typography>
               <Typography variant="body2" color="text.secondary" sx={{ display: { xs: 'none', sm: 'block' }, mt: 0.5 }}>Intelligent Claims Processing</Typography>
             </Box>
           </Box>
