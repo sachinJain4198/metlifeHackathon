@@ -66,6 +66,28 @@ export default function AdminDashboard() {
     ];
   }, [claims]);
 
+  React.useEffect(() => {
+    console.log("HItted")
+    const fetchClaims = async () => {
+      try {
+        dispatch(setLoading(true));
+        const response = await fetch("/mockClaimsData.json");
+        console.log("Respense", response)
+        if (!response.ok) throw new Error("Failed to fetch claims data");
+        const data = await response.json();
+        console.log("Data",data)
+        dispatch(setClaims(data));
+      } catch (err) {
+        dispatch(setError(err.message));
+      } finally {
+        dispatch(setLoading(false));
+      }
+    };
+    console.log("abkjdfkaj")
+    fetchClaims();
+  }, []);
+
+
   return (
     <div className="space-y-6">
       <div>
