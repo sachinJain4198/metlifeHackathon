@@ -9,6 +9,7 @@ import {
 import StatCard from "../components/StatCard";
 import HighAmountClaimsCard from "../components/HighAmountClaimsCard";
 import TotalClaimsAmountByStatus from "../components/TotalClaimsAmountByStatus";
+import ClaimsOverTime from "../components/ClaimsOverTime";
 import { useDispatch, useSelector } from "react-redux";
 import {
   setClaims,
@@ -17,7 +18,6 @@ import {
 } from "../features/claims/claimDataSlice";
 
 export default function AdminDashboard() {
-
   const dispatch = useDispatch();
   const { claims, loading, error } = useSelector((state) => state.allClaims);
 
@@ -57,7 +57,7 @@ export default function AdminDashboard() {
         value: rejected,
         icon: AlertTriangle,
       },
-       {
+      {
         id: crypto.randomUUID(),
         title: "Fraudulent Claims",
         value: frauds,
@@ -82,7 +82,6 @@ export default function AdminDashboard() {
     };
     fetchClaims();
   }, []);
-
 
   return (
     <div className="space-y-6">
@@ -112,6 +111,9 @@ export default function AdminDashboard() {
             <HighAmountClaimsCard />
           </div>
         </div>
+      </div>
+      <div className="col-lg-12 mb-4">
+        <ClaimsOverTime claims={claims} />
       </div>
     </div>
   );
