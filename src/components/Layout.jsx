@@ -10,16 +10,12 @@ import Avatar from '@mui/material/Avatar'
 import Menu from '@mui/material/Menu'
 import MenuItem from '@mui/material/MenuItem'
 import { useState } from 'react'
-import MenuIcon from '@mui/icons-material/Menu'
-import DescriptionIcon from '@mui/icons-material/Description'
-import ListAltIcon from '@mui/icons-material/ListAlt'
-import DashboardIcon from '@mui/icons-material/Dashboard'
-import AssignmentTurnedInIcon from '@mui/icons-material/AssignmentTurnedIn'
+import { Menu as MenuIcon, FileText, List, LayoutGrid, BadgeCheck } from 'lucide-react'
 
 const actions = [
-  { to: '/submit', label: 'Submit Claim', icon: <DescriptionIcon fontSize="small" />, variant: 'contained' },
-  { to: '/claims', label: 'My Claims', icon: <ListAltIcon fontSize="small" />, variant: 'outlined' },
-  { to: '/admin', label: 'Admin Dashboard', icon: <DashboardIcon fontSize="small" />, variant: 'outlined' },
+  { to: '/', label: 'Submit Claim', icon: <FileText size={14} />, variant: 'contained' },
+  { to: '/claims', label: 'My Claims', icon: <List size={14} />, variant: 'outlined' },
+  { to: '/admin', label: 'Admin Dashboard', icon: <LayoutGrid size={14} />, variant: 'outlined' },
 ]
 
 export default function Layout() {
@@ -31,17 +27,17 @@ export default function Layout() {
       <AppBar position="sticky" color="default" elevation={0} sx={{ borderBottom: 1, borderColor: 'divider' }}>
         <Toolbar className="d-flex justify-content-between align-items-center">
           <Box className="d-flex align-items-center gap-3">
-            <Avatar variant="rounded" sx={{ bgcolor: '#13c1cf' }}>
-              <AssignmentTurnedInIcon sx={{ color: 'white' }} />
+            <Avatar variant="rounded" sx={{ bgcolor: '#13c1cf', width: 40, height: 40 }}>
+              <BadgeCheck size={20} color="#fff" />
             </Avatar>
             <Box>
-              <Typography variant="h6" sx={{ lineHeight: 1 }}>SmartClaims</Typography>
-              <Typography variant="body2" color="text.secondary" sx={{ display: { xs: 'none', sm: 'block' } }}>Intelligent Claims Processing</Typography>
+              <Typography variant="h6" sx={{ lineHeight: 1, fontWeight: 700 }}>SmartClaims</Typography>
+              <Typography variant="body2" color="text.secondary" sx={{ display: { xs: 'none', sm: 'block' }, mt: 0.5 }}>Intelligent Claims Processing</Typography>
             </Box>
           </Box>
           <Box className="d-none d-md-flex align-items-center gap-2">
             {actions.map(a => (
-              <Button key={a.to} component={Link} to={a.to} startIcon={a.icon} className="rounded-pill" variant={pathname===a.to? 'contained': a.variant} color={pathname===a.to? 'primary': 'inherit'}>
+              <Button key={a.to} component={Link} to={a.to} startIcon={a.icon} className={`rounded-pill px-3 ${pathname===a.to?"selected-button-color":"button-color"}`} size="medium" variant={pathname===a.to? 'contained': a.variant} color={pathname===a.to? 'primary': 'inherit'}>
                 {a.label}
               </Button>
             ))}
