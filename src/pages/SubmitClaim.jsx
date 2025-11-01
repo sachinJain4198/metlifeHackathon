@@ -24,11 +24,12 @@ export default function SubmitClaim() {
     const [patient, setPatient] = useState({ policy: '', dob: '' })
     const [details, setDetails] = useState({ amount: '', desc: '' })
     const [files, setFiles] = useState([])
+    const [validationErrors, setValidationErrors] = useState({})
 
     const steps = [
         {
             title: 'Step 1 of 3 - Patient Information',
-            component: <PatientInfo patient={patient} setPatient={setPatient} />
+            component: <PatientInfo patient={patient} setPatient={setPatient} setValidationErrors={setValidationErrors} />
         },
         {
             title: 'Step 2 of 3 - Claim Details',
@@ -41,10 +42,10 @@ export default function SubmitClaim() {
     ]
 
     const disabledNext = useMemo(() => {
-        if (step === 0) return !(patient.policy && patient.dob)
+        if (step === 0) return !(patient.policy && patient.dob) || validationErrors.dob
         if (step === 1) return !(details.amount)
         return files.length === 0
-    }, [step, patient, details, files])
+    }, [step, patient, details, files, validationErrors])
 
     const next = () => setStep(s => Math.min(steps.length - 1, s + 1))
     const prev = () => setStep(s => Math.max(0, s - 1))
@@ -60,6 +61,7 @@ export default function SubmitClaim() {
             description: details.desc,
             attachments: files.map((f) => ({ name: f.name, type: f.type, size: f.size }))
         }
+        console.log('data ---',data)
         navigate('/claims', { replace: true })
     }
 
